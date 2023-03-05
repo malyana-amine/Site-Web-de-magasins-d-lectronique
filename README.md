@@ -21,10 +21,10 @@ Voici quelques Fonctionnalités clés du projet de don de sang :
 - Créer un compte magasin
 - Modifier et supprimer une magasin
 - afficher les produits
+- ajouter et modifier et suprimer les produit
 ### L'utilisateur :
 - Naviguez sur le site et découvrez tous les produits
 - Enregistrer
 - Créer une liste de favoris
-- rapports
+- Créer une liste de comparaison
 - ajouter un commentaire
-
