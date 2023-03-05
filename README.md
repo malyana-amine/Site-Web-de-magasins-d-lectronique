@@ -16,8 +16,7 @@ Voici quelques Fonctionnalités clés du projet de don de sang :
 ### admin: 
 - Approbation du compte du magasin
 - Approuver les commentaires
-- Accepter les modifications
-- supprimer la magasin
+- changer le status de la magasin
 ### Le propriétaire du magasin:
 - Créer un compte magasin
 - Modifier et supprimer une magasin
