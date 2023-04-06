@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/addCity', [CityController::class, 'home'])->name('addCity');
+Route::post('/addCity', [CityController::class, 'store'])->name('store');
+Route::get('/delCity/{id}', [CityController::class, 'destroy']);
+
+Route::get('/addCategory', [CategoryController::class, 'home'])->name('addCategory');
+Route::post('/addCategory', [CategoryController::class, 'store'])->name('storeCategory');
+Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
+
 
 require __DIR__.'/auth.php';
