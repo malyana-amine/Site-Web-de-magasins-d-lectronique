@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MagasineController;
@@ -49,9 +50,9 @@ Route::post('/createMagasine', [MagasineController::class, 'store'])->name('stor
 // Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
 
 
-Route::get('/createMagasine', [MagasineController::class, 'home'])->name('createMagasine');
+Route::get('/addProduct', [ProductController::class, 'home'])->name('addProduct');
 
-Route::post('/createMagasine', [MagasineController::class, 'store'])->name('storeMagasine');
+Route::post('/addProduct', [ProductController::class, 'store'])->name('storeProduct');
 
 
 require __DIR__.'/auth.php';
