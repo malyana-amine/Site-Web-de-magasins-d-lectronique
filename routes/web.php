@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MagasineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,9 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/user', function () {
+    return view('user');
 });
 
 Route::get('/dashboard', function () {
@@ -37,6 +41,17 @@ Route::get('/delCity/{id}', [CityController::class, 'destroy']);
 Route::get('/addCategory', [CategoryController::class, 'home'])->name('addCategory');
 Route::post('/addCategory', [CategoryController::class, 'store'])->name('storeCategory');
 Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
+
+
+Route::get('/createMagasine', [MagasineController::class, 'home'])->name('createMagasine');
+
+Route::post('/createMagasine', [MagasineController::class, 'store'])->name('storeMagasine');
+// Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
+
+
+Route::get('/createMagasine', [MagasineController::class, 'home'])->name('createMagasine');
+
+Route::post('/createMagasine', [MagasineController::class, 'store'])->name('storeMagasine');
 
 
 require __DIR__.'/auth.php';

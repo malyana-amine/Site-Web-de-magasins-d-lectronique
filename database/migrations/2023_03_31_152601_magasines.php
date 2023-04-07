@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('prop_id')->references('id')->on('users');
             
             $table->string('adress');
-            $table->boolean('status');
+            $table->boolean('status')->default(true);
             $table->string('image');
             $table->string('teleNumber');
 
