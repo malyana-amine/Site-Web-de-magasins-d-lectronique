@@ -9,10 +9,19 @@ use Illuminate\Http\Request;
 class MagasineController extends Controller
 {
 
+    // public function home(Request $request)
+    // {
+    //     $data = city::orderBy('name', 'asc')->get();
+    //     $data1 = Magasine::orderBy('name', 'asc')->get();
+    //     // return view('createMagasine')->with('data',$data);
+    //     return view('createMagasine',['cities' => $cities, 'magazines' => $magazines]);
+    // }
+
     public function home(Request $request)
     {
-        $data = city::orderBy('name', 'asc')->get();
-        return view('createMagasine')->with('data',$data);
+        $cities = City::orderBy('name', 'asc')->get();
+        $magazines = Magasine::orderBy('name', 'asc')->get();
+        return view('createMagasine', ['cities' => $cities, 'magazines' => $magazines]);
     }
 
     public function store(Request $request)

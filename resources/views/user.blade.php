@@ -11,6 +11,7 @@
     
     <a href="{{route('createMagasine')}}" class="rounded-full bg-slate-400">i want to create my magasine</a>
     <a href="{{route('addProduct')}}" class="rounded-full bg-slate-400">add produit</a>
+    <a href="{{route('addProduct')}}" class="rounded-full bg-slate-400">edite my magasine</a>
 
 
 </body>

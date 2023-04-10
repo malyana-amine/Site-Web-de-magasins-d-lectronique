@@ -12,9 +12,17 @@ class ProductController extends Controller
     
     public function home(Request $request)
     {
-        $data = Category::orderBy('name', 'asc')->get();
-        return view('addProduct')->with('data',$data);
-    }
+        $user = $request->user(); // get the authenticated user
+        $magasine = Magasine::where('prop_id', $user->id)->first(); // get the magasine associated with the user
+    
+        $Categories = Category::orderBy('name', 'asc')->get();
+        $products = Product::join('magasines', 'magasines.id', '=', 'products.magasine_id')
+            ->where('magasines.prop_id', $user->id)
+            ->orderBy('products.name', 'asc')
+            ->get();
+    
+        return view('addProduct', ['Categories' => $Categories, 'products' => $products]);
+    }  
 
     public function store(Request $request)
     {
@@ -36,28 +44,8 @@ class ProductController extends Controller
 
         Product::create($inputs);
         
-
-
-        // $Product = new Product;
-        // $Product->name = $request->name;
-        // $Product->description = $request->description;
-        // $Product->categ_id = $request->categ_id;
-        // $Product->price = $request->price;
-
-
-
-        // $Product->prop_id = auth()->user()->id; 
-        
-        // if ($request->hasFile('image')) {
-        //     $image = $request->file('image');
-        //     $image_name = time() . '.' . $image->getClientOriginalExtension();
-        //     $destination_path = public_path('images/');
-        //     $image->move($destination_path, $image_name);
-        //     $Product->image = $image_name;
-        // }
-    
-        // $Magasine->save();
         return redirect()->route('dashboard');
+        
     }
 
 }
