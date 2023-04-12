@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    
+
     <a href="{{route('addCity')}}" class="rounded-full bg-slate-400">add City</a>
     <a href="{{route('addCategory')}}" class="rounded-full bg-slate-400">add category</a>
 </x-app-layout>

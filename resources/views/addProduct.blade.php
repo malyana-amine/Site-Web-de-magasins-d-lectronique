@@ -9,7 +9,7 @@
 </head>
 <body>
     
-
+{{-- @dd('$products') --}}
 
     <form method="POST" enctype="multipart/form-data" action="{{ route('storeProduct')}}">
         @csrf
@@ -69,7 +69,8 @@
                     <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                         <td class="px-6 py-4">{{ $item1->name }}</td>
                         <td class="px-6 py-4">
-                            <a href="{{ url('delCity/'.$item1->id) }}">del</a>
+                            <a href="{{ route('deleteProduct',$item1->id) }}">del</a><
+                            <a href="{{ route('editProduct',$item1->id) }}">edite</a><
                         </td>
                     </tr>
                 @endforeach

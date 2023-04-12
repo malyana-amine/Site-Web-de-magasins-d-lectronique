@@ -50,9 +50,14 @@ Route::post('/createMagasine', [MagasineController::class, 'store'])->name('stor
 // Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
 
 
+
+
 Route::get('/addProduct', [ProductController::class, 'home'])->name('addProduct');
 
 Route::post('/addProduct', [ProductController::class, 'store'])->name('storeProduct');
+Route::get('/produit/delete/{id}', [ProductController::class, 'destroy'])->name('deleteProduct');
+Route::get('/produit/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
+Route::put('/produit/update/{id}', [ProductController::class, 'update'])->name('updateProduit');
 
 
 require __DIR__.'/auth.php';
