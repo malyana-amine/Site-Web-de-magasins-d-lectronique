@@ -26,6 +26,20 @@ class MagasineController extends Controller
 
     public function store(Request $request)
     {
+
+
+
+        $data = Magasine::where('prop_id',auth()->user()->id)->get();
+
+// dd($data);
+
+        if($data->count()!=0){
+            return redirect()->route('dashboard');
+        }
+
+
+
+
         $Magasine = new Magasine;
         $Magasine->name = $request->name;
         $Magasine->adress = $request->adress;
@@ -43,7 +57,9 @@ class MagasineController extends Controller
         }
     
         $Magasine->save();
-        return redirect()->route('dashboard');
+        // return redirect()->route('dashboard');
+        return view('welcome');
+        
     }
 
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -24,6 +25,9 @@ Route::get('/', function () {
 Route::get('/user', function () {
     return view('user');
 });
+Route::get('/admin', function () {
+    return view('adminDash');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -35,13 +39,22 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/admin', [adminController::class, 'home'])->name('admin');
+Route::get('/admin/magasines', [adminController::class, 'magasineHome'])->name('adminMagasine');
+Route::get('/admin/cities', [adminController::class, 'adminCity'])->name('adminCity');
+Route::get('/admin/categories', [adminController::class, 'adminCategory'])->name('adminCategory');
+Route::get('/admin/magasines/{id}', [adminController::class, 'aprovemagasine'])->name('aproveMagasine');
+Route::post('/admin/categories/add', [adminController::class, 'store'])->name('adminstoreCategory');
+Route::get('/delCategory/{id}', [adminController::class, 'destroy'])->name('deleteCategory');
+
+
 Route::get('/addCity', [CityController::class, 'home'])->name('addCity');
 Route::post('/addCity', [CityController::class, 'store'])->name('store');
 Route::get('/delCity/{id}', [CityController::class, 'destroy']);
 
 Route::get('/addCategory', [CategoryController::class, 'home'])->name('addCategory');
 Route::post('/addCategory', [CategoryController::class, 'store'])->name('storeCategory');
-Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
+// Route::get('/delCategory/{id}', [CategoryController::class, 'destroy']);
 
 
 Route::get('/createMagasine', [MagasineController::class, 'home'])->name('createMagasine');

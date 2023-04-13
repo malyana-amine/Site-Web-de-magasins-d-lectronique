@@ -23,7 +23,7 @@ class CityController extends Controller
  public function index()
  {
      $data = city::orderBy('name', 'asc')->get();
-     return view('addcity')->with('data',$data);
+     return view('adminCities')->with('data',$data);
  }
 
  public function destroy($id)

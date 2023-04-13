@@ -25,7 +25,7 @@ class CategoryController extends Controller
     //  $data = Category::all();
     //  return view('addCategory')->with('data',$data);
     $data = Category::orderBy('name', 'asc')->get();
-    return view('addCategory')->with('data',$data);
+    return view('adminCategories')->with('data',$data);
  }
 
  public function destroy($id)
