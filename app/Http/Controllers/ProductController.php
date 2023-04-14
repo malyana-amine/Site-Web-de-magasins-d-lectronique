@@ -65,7 +65,6 @@ class ProductController extends Controller
 
 public function update(Request $request,$id)
 {
-
     $Products = Product::find($id);
 
     if ($request->hasFile('image')) {

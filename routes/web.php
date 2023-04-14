@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -47,6 +48,11 @@ Route::get('/admin/magasines/{id}', [adminController::class, 'aprovemagasine'])-
 Route::post('/admin/categories/add', [adminController::class, 'store'])->name('adminstoreCategory');
 Route::get('/delCategory/{id}', [adminController::class, 'destroy'])->name('deleteCategory');
 
+
+
+Route::get('/user', [userController::class, 'home'])->name('user');
+Route::post('/user/product', [userController::class, 'store'])->name('productsAdd');
+Route::get('/user/product', [userController::class, 'productuser'])->name('productshome');
 
 Route::get('/addCity', [CityController::class, 'home'])->name('addCity');
 Route::post('/addCity', [CityController::class, 'store'])->name('store');
