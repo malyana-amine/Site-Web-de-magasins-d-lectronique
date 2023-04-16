@@ -28,7 +28,7 @@ class adminController extends Controller
     public function aprovemagasine($id)
     {
         $magazines = Magasine::find($id);
-        $magazines->update(['status' => '1']);
+        $magazines->update(['status' => '0']);
         return redirect()->route('adminMagasine');
     }
     public function adminCity()

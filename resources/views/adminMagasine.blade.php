@@ -86,7 +86,7 @@
                             @foreach ($magazines as $item)
                                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="px-6 py-4">{{ $item->name }}</td>
-                                    @if ($item->status == 0)
+                                    @if ($item->status == 1)
                                         
                                     
                                     <td class="px-6 py-4">

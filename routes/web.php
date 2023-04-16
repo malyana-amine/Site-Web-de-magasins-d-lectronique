@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -53,6 +54,17 @@ Route::get('/delCategory/{id}', [adminController::class, 'destroy'])->name('dele
 Route::get('/user', [userController::class, 'home'])->name('user');
 Route::post('/user/product', [userController::class, 'store'])->name('productsAdd');
 Route::get('/user/product', [userController::class, 'productuser'])->name('productshome');
+Route::get('/user/magasine', [userController::class, 'editmagasine'])->name('editmaasine');
+
+
+Route::get('/client',function(){
+ return   view('clientacuell');
+});
+
+Route::get('/client', [ClientController::class, 'home']);
+Route::get('/client/search', [ClientController::class, 'search'])->name('serchproduct');
+
+
 
 Route::get('/addCity', [CityController::class, 'home'])->name('addCity');
 Route::post('/addCity', [CityController::class, 'store'])->name('store');
