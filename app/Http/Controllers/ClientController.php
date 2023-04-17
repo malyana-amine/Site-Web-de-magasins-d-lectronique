@@ -63,4 +63,30 @@ class ClientController extends Controller
         return view('clientacuell', ['products' => $products,'categories' => $categories, 'magazines' => $magazines, 'cities' => $cities]);
     }
 
+    // public function edit($id)
+    // {
+    //     $products = Product::find($id);
+    //     $Categories = Category::orderBy('name', 'asc')->get();
+    
+    //     return view('editProduct', ['Categories' => $Categories, 'products' => $products]);
+    // }
+    public function show($id)
+    {
+        $data = Product::find($id)
+           ->join('magasines', 'products.magasine_id', '=', 'magasines.id')
+           ->join('cities', 'magasines.city_id', '=', 'cities.id')
+           ->select('products.name AS title', 'products.description AS product_descripton',
+                    'magasines.name AS magasine_name', 'cities.name AS city_name',
+                    'magasines.adress AS address', 'products.price')
+           ->first();
+
+
+        $cities = city::all();
+        $categories = Category::orderBy('name', 'asc')->get();
+    
+        return view('product', compact('data', 'cities', 'categories'));
+    }
+
+
+
 }

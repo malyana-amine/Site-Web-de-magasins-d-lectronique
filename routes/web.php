@@ -30,6 +30,9 @@ Route::get('/user', function () {
 Route::get('/admin', function () {
     return view('adminDash');
 });
+// Route::get('/product', function () {
+//     return view('product');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -63,6 +66,7 @@ Route::get('/client',function(){
 
 Route::get('/client', [ClientController::class, 'home']);
 Route::get('/client/search', [ClientController::class, 'search'])->name('serchproduct');
+Route::get('/client/product/{id}', [ClientController::class, 'show'])->name('viewproduct');
 
 
 

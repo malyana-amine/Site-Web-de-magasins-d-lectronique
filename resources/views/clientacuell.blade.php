@@ -15,46 +15,6 @@
 
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
-    <!--Nav-->
-    {{-- <nav id="header" class="w-full z-30 top-0 py-1">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
-
-            <label for="menu-toggle" class="cursor-pointer md:hidden block">
-                <svg class="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
-                    <title>menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-                </svg>
-            </label>
-            <input class="hidden" type="checkbox" id="menu-toggle" />
-
-            <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
-                <nav>
-                    <ul class="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Shop</a></li>
-                        <li><a class="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">About</a></li>
-                    </ul>
-                </nav>
-            </div>
-
-            <div class="order-1 md:order-2">
-                <a class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-                    NORDICS
-                </a>
-            </div>
-
-            <div class="order-2 md:order-3 flex items-center" id="nav-content">
-
-                <a class="inline-block no-underline hover:text-black" href="#">
-##
-                </a>
-
-                <a class="pl-3 inline-block no-underline hover:text-black" href="#">
-##
-                </a>
-
-            </div>
-        </div>
-    </nav> --}}
 
 
     <nav id="header" class="fixed z-50 top-0 w-full bg-white border-b border-gray-200">
@@ -97,8 +57,40 @@
       
           <!-- User name and log out -->
           <div class="hidden md:block flex items-center space-x-4">
-            <a class="hover:text-black" href="#">User Name</a>
-            <a class="hover:text-black" href="#">Log out</a>
+            @if (Route::has('login'))
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                    @auth
+                    {{-- <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end"> --}}
+                        <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+                            <li class="flex-1 md:flex-none md:mr-3">
+            
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+            
+                                    <a class="bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded" href="route('logout')"
+                                            onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                </a>
+                                </form>
+            
+            
+            
+                            </li>
+                            <li class="flex-1 md:flex-none md:mr-3">
+                                <a class="bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded" href="{{route('profile.edit')}}">profile</a>
+                            </li>
+                        </ul>
+                    {{-- </div> --}}
+                    @else
+                        <a href="{{ route('login') }}" class="bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Register</a>
+                        @endif
+                    @endauth
+                </div>
+                @endif
           </div>
       
         </div>
@@ -106,102 +98,64 @@
 
 
 
-    <div id="default-carousel" class="relative w-full" data-carousel="slide">
+      <div id="default-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-             <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/1680793564.jpg" class="absolute block w-20 h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/1680793564.jpg" class="absolute block w-20 h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/1680793564.jpg" class="w-20 h-32 absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <!-- Item 4 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/1680793564.jpg" class="absolute block w-20 h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-            <!-- Item 5 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="/images/1680793564.jpg" class="absolute w-20 h-32 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <!-- Items -->
+            <div class="grid grid-flow-col gap-4">
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                </div>
             </div>
         </div>
         <!-- Slider indicators -->
         <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+            <button type="button" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 focus:opacity-100 focus:outline-none" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+            <button type="button" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 focus:opacity-100 focus:outline-none" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+            <button type="button" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 focus:opacity-100 focus:outline-none" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+            <button type="button" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 focus:opacity-100 focus:outline-none" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+            <button type="button" class="w-3 h-3 bg-white rounded-full opacity-50 hover:opacity-100 focus:opacity-100 focus:outline-none" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
         </div>
         <!-- Slider controls -->
-        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                <span class="sr-only">Previous</span>
-            </span>
+        <button type="button" class="absolute top-1/2 left-4 z-30 p-2 bg-white bg-opacity-30 hover:bg-opacity-50 focus:bg-opacity-50 focus:outline-none transform -translate-y-1/2" data-carousel-prev>
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <span class="sr-only">Previous</span>
         </button>
-        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                <span class="sr-only">Next</span>
-            </span>
+        <button type="button" class="absolute top-1/2 right-4 z-30 p-2 bg-white bg-opacity-30 hover:bg-opacity-50 focus:bg-opacity-50 focus:outline-none transform -translate-y-1/2" data-carousel-next>
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <span class="sr-only">Next</span>
         </button>
     </div>
     
 
     <section class="bg-white py-8">
 
-        <div class="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-
-            <nav id="store" class="w-full z-30 top-0 px-6 py-1">
-                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-
-                    <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-				Store
-			</a>
-
-                    <div class="flex items-center" id="store-nav-content">
-
-                        <a class="pl-3 inline-block no-underline hover:text-black" href="#">
-                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
-                            </svg>
-                        </a>
-
-                        <a class="pl-3 inline-block no-underline hover:text-black" href="#">
-                            <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
-                            </svg>
-                        </a>
-
-                    </div>
-              </div>
-            </nav>
-
-
-        @foreach ($products as $product)
-            
-       
-
-
-            <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-                <a href="#">
-                    <img class="hover:grow hover:shadow-lg  w-96 h-96" src="/images/{{$product->image}}">
-                    <div class="pt-3 flex items-center justify-between">
-                        <p class="">{{$product->name}}</p>
-                    </div>
-                    <p class="pt-1 text-gray-900">{{$product->price}}DH</p>
+        <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+            @foreach ($products as $product)
+              <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+                <a href="{{route('viewproduct',$product->id)}}" class="group">
+                  <img class="w-full hover:scale-110 transition duration-300 ease-in-out transform hover:shadow-lg" src="/images/{{$product->image}}">
+                  <div class="pt-3 flex items-center justify-between">
+                    <p class="text-gray-900 font-medium group-hover:text-blue-600">{{$product->name}}</p>
+                  </div>
+                  <p class="pt-1 text-gray-900">{{$product->price}}DH</p>
                 </a>
-            </div>
-             @endforeach
-
-
-            </div>
+              </div>
+            @endforeach
+          </div>
+          
 
     </section>
 
