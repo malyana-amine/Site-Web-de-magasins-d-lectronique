@@ -16,4 +16,9 @@ class Product extends Model
         'price',
         'magasine_id',
     ];
+    public function magasine()
+{
+    return $this->belongsTo(Magasine::class);
+}
+
 }

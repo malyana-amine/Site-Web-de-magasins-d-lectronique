@@ -15,18 +15,28 @@ class ClientController extends Controller
 
     public function home(){
 
+        // $products = Product::all();
+        $products = Product::inRandomOrder()->take(8)->get();
+        // $products = Product::all()->random(8);
+        // dd($products);
         $categories = Category::all();
         $magazines = Magasine::all();
         $cities = city::all();
-        return view('clientacuell', ['categories' => $categories, 'magazines' => $magazines, 'cities' => $cities]);
+        return view('clientacuell', ['categories' => $categories, 'magazines' => $magazines, 'cities' => $cities, 'products' => $products ]);
 
     }
 
 
     public function search(Request $request)
     {
+        $categories = Category::all();
+        $magazines = Magasine::all();
+        $cities = city::all();
+
+
         $category = $request->input('category');
         $searchTerm = $request->input('search');
+        $cityId = $request->input('city');
     
         $query = Product::query();
     
@@ -40,11 +50,17 @@ class ClientController extends Controller
                     ->orWhere('description', 'like', "%$searchTerm%");
             });
         }
+        
+    if ($cityId) {
+        $query->whereHas('magasine', function ($q) use ($cityId) {
+            $q->where('city_id', $cityId);
+        });
+    }
     
-        $results = $query->get();
-        dd($results);
+        $products = $query->get();
+        // dd($products);
     
-        return view('clientacuell', ['results' => $results]);
+        return view('clientacuell', ['products' => $products,'categories' => $categories, 'magazines' => $magazines, 'cities' => $cities]);
     }
 
 }
