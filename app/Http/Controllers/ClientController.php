@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\city;
 use App\Models\User;
+use App\Models\comment;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Magasine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ClientController extends Controller
 {
@@ -62,31 +65,51 @@ class ClientController extends Controller
     
         return view('clientacuell', ['products' => $products,'categories' => $categories, 'magazines' => $magazines, 'cities' => $cities]);
     }
-
-    // public function edit($id)
-    // {
-    //     $products = Product::find($id);
-    //     $Categories = Category::orderBy('name', 'asc')->get();
-    
-    //     return view('editProduct', ['Categories' => $Categories, 'products' => $products]);
-    // }
     public function show($id)
     {
-        $data = Product::find($id)
-           ->join('magasines', 'products.magasine_id', '=', 'magasines.id')
-           ->join('cities', 'magasines.city_id', '=', 'cities.id')
-           ->select('products.name AS title', 'products.description AS product_descripton',
-                    'magasines.name AS magasine_name', 'cities.name AS city_name',
-                    'magasines.adress AS address', 'products.price')
-           ->first();
+        $product = Product::find($id);
+        $user = Auth::user()->id;
+        // $comment = comment::->get();
+        // // 
+        $comments = Comment::where('product_id',$id)->join('users', 'comments.user_id', '=', 'users.id')
+            ->select('users.name', 'comments.comment', 'comments.image')
+            ->get();
+        // dd($comments);
+        $data = Product::join('magasines', 'products.magasine_id', '=', 'magasines.id')
+       ->join('cities', 'magasines.city_id', '=', 'cities.id')
+       ->where('products.id', $id) // add a where clause to filter by the product id
+       ->select('products.name AS title', 'products.description AS product_description',
+                'magasines.name AS magasine_name', 'cities.name AS city_name',
+                'magasines.adress AS address', 'products.price', 'products.image')
+       ->first();
+        //    dd($data);
 
 
         $cities = city::all();
         $categories = Category::orderBy('name', 'asc')->get();
     
-        return view('product', compact('data', 'cities', 'categories'));
+        return view('product', compact('data', 'cities', 'categories','product','user','comments'));
     }
 
 
+    public function addcomment(Request $request){
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $destination_path = public_path('images/');
+            $image->move($destination_path, $image_name);
+            $comment = new comment(request()->except('image'));
+            $comment->image = $image_name;
+            $comment->save();
+        } else {
+            comment::create(request()->all());
+        }
+        $id = $request->input('product_id');
+        // dd($id);
+    
+        // return $this->show($id);
+        return Redirect::Route('viewproduct',$id);
+    }
 
 }

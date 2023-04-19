@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('image');
 
             $table->unsignedBigInteger('categ_id');
-            $table->foreign('categ_id')->references('id')->on('categories');
+            $table->foreign('categ_id')->references('id')->on('categories')->onDelete('cascade');
             
             $table->integer('price');
 
 
             $table->unsignedBigInteger('magasine_id');
-            $table->foreign('magasine_id')->references('id')->on('magasines');
+            $table->foreign('magasine_id')->references('id')->on('magasines')->onDelete('cascade');
 
 
 

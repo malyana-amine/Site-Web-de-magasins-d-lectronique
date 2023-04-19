@@ -15,41 +15,69 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="antialiased" >
-        <div style="background-image: url('{{ asset('images/iam_os-zOWIimSy12Q-unsplash.jpg') }}')" class="relative bg-slate-600 sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Register</a>
-                        @endif
-                    @endauth
-                </div>
-                @endif
-                <div>
-                    <p class=" text-3xl font-extrabold text-white py-20">Do you want to buy a product</p>
-                    <p class=" text-xl font-extrabold text-white ">This site makes it easy for you to purchase before you go to the seller.<br> can see all the products available on it before you waste your time in the store</p>
-                    <p class=" text-xl font-extrabold text-white ">You are welcome anytime</p>
-
-                    <div>
+    <body class="antialiased leading-normal tracking-normal text-white bg-gray-300" >
+        <div class="">
+            <nav id="header" class="fixed w-full z-30 top-0 text-black">
+                <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+                  <div class="pl-4 flex items-center">
+                    <a class=" text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                      LANDING
+                    </a>
+                  </div>
+                  <div class="block lg:hidden pr-4">
+                    <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                     menu
+                    </button>
+                  </div>
+                  <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+                    <ul class="list-reset lg:flex justify-end flex-1 items-center">
                         @if (Route::has('login'))
-                        
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Dashboard</a>
-                            @else
-
-                            <p class=" text-xl font-extrabold text-white ">Register for a better experience : </p>
-                            <a href="{{ route('register') }}" class="ml-4 bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4 hover:border-transparent text-lg rounded">Register</a>
                     
-                    @endif
-                    @endauth
+                        @auth
+                      <li class="mr-3">
+                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ url('/dashboard') }}">get started</a>
+                      </li>
+                      @else
+                      <li class="mr-3">
+                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('login') }}">login</a>
+                      </li>
+                      @if (Route::has('register'))
+                      <li class="mr-3">
+                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('register') }}">register</a>
+                      </li>
+                      @endif
+                      @endauth
+                  
+                  @endif
+                    </ul>
+
                 </div>
-            </div>
+
+                  </div>
+                </div>
+                <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+              </nav>
+                   <div class="pt-24">
+      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <p class="uppercase tracking-loose w-full">What business are you?</p>
+          <h1 class="my-4 text-5xl font-bold leading-tight">
+            Main Hero Message to sell yourself!
+          </h1>
+          <p class="leading-normal text-2xl mb-8">
+            Sub-hero message, not too long and not too short. Make it just right!
+          </p>
+          <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Subscribe
+          </button>
+        </div>
+     
+        <div class="w-full md:w-3/5 py-6 text-center">
+          <img class="w-full md:w-4/5 z-50" src="hero.png" />
+        </div>
+      </div>
+    </div> 
+
             
            
     </body>

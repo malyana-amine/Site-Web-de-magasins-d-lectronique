@@ -104,11 +104,11 @@
                 <div class="container mx-auto px-4 py-8">
                   <div class="flex flex-wrap text-center">
                     <div class="w-full md:w-1/2">
-                      <img class="w-full" src="/images/1680793564.jpg" alt="Product Image">
+                      <img class="w-full" src="/images/{{ $data->image }}" alt="Product Image">
                     </div>
                     <div class="w-full md:w-1/2 px-4">
                       <h1 class="text-2xl font-bold mb-4">{{ $data->title }}</h1>
-                      <div class="text-base mb-4">description : {{ $data->product_descripton }}</div>
+                      <div class="text-base mb-4">description : {{ $data->product_description }}</div>
                       <div class="text-base mb-4">adrees : {{ $data->address }}</div>
                       <div class="text-base mb-4">city : {{ $data->city_name }}</div>
                       <div class="text-lg font-bold mb-4">magasine : {{ $data->magasine_name }}</div>
@@ -124,6 +124,36 @@
     <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
       
 
+      <div class="p-4 bg-gray-100 rounded-lg">
+        @foreach ($comments as $comment)
+            
+        
+        <div class="flex items-center">
+          <img src="https://via.placeholder.com/50" alt="Avatar" class="w-10 h-10 rounded-full mr-4">
+          <h4 class="text-lg font-bold">{{$comment->name}}</h4>
+        </div>
+        <div class="mt-4">
+          <p class="text-gray-700">{{$comment->comment}}</p>
+          @if ($comment->image)
+              <img class=" w-32  h-32" src="/images/{{$comment->image}}" alt="Comment Image" class="mt-4">
+          @endif
+        
+        </div>
+        @endforeach
+        <form method="POST" enctype="multipart/form-data" action="{{ route('addcomment')}}" class="mt-4">
+          @csrf
+          <input type="text" name="comment" placeholder="Add your comment" class="px-4 py-2 border rounded-md w-full" />
+          <input type="hidden" value="{{ $user }}" name="user_id"/>
+          <input type="hidden" value="{{ $product->id }}" name="product_id"/>
+          
+          <label for="image-upload" class="block mt-2 text-gray-700 cursor-pointer">Upload an Image</label>
+          
+          <input name="image" id="image-upload" type="file" class="hidden" />
+          <button class="bg-black" type="submit">add</button>
+        </form>
+      </div>
+      
+      
          
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>

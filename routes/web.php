@@ -67,6 +67,7 @@ Route::get('/client',function(){
 Route::get('/client', [ClientController::class, 'home'])->name('client');
 Route::get('/client/search', [ClientController::class, 'search'])->name('serchproduct');
 Route::get('/client/product/{id}', [ClientController::class, 'show'])->name('viewproduct');
+Route::post('/client/product/comment', [ClientController::class, 'addcomment'])->name('addcomment');
 
 
 

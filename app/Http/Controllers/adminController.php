@@ -36,8 +36,9 @@ class adminController extends Controller
         $user = User::find($propId);
         $user->update(['roleId' => "2"]);
         $user->save();
-        dd($user->roleId);
-       
+
+
+        return redirect()->route('adminMagasine');
     }
     public function adminCity()
     {

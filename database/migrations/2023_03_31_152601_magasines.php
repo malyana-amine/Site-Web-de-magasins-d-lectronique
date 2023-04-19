@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             
             $table->unsignedBigInteger('prop_id');
-            $table->foreign('prop_id')->references('id')->on('users');
+            $table->foreign('prop_id')->references('id')->on('users')->onDelete('cascade');
             
             $table->string('adress');
             $table->boolean('status')->default(true);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('teleNumber');
 
             $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
             $table->timestamps();
         });

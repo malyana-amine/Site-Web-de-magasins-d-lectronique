@@ -41,7 +41,7 @@
                     @csrf
                     <div class="mb-4">
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Your email</label>
-                      <input value="{{$data->name}}" type="email" name="name" id="email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent block w-full py-2 px-3" placeholder="name@flowbite.com" required>
+                      <input value="{{$data->name}}" type="text" name="name" id="email" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent block w-full py-2 px-3" placeholder="name@flowbite.com" required>
                     </div>
                     <div class="mb-4">
                       <label for="address" class="block mb-2 text-sm font-medium text-gray-700">Your address</label>

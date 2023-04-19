@@ -20,7 +20,7 @@ class adminCheck
     {
 
         $user = Auth::user();
-        if ($user->roleId == 2){
+        if ($user->roleId == 3){
             return $next($request);
            
         }
