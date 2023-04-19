@@ -114,23 +114,12 @@
                       <div class="text-lg font-bold mb-4">magasine : {{ $data->magasine_name }}</div>
                       <div class="text-3xl font-bold mb-4">{{ $data->price }}DH</div>
 
-
-                      
-        {{-- <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td> --}}
-
-
                     </div>
                   </div>
                 </div>
               </div>     
 
     </section>
-
 
     <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
       

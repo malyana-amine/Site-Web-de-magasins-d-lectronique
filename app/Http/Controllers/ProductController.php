@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         Product::destroy($id);
 
-        return redirect()->route('addProduct');
+        return redirect()->route('productshome');
     }
 
     public function edit($id)
