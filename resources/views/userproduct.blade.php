@@ -51,7 +51,7 @@
                 
                     <div class="mb-4">
                       <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Add Product Photo</label>
-                      <input name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                      <input  accept=".jpg, .jpeg, .png" name="image" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input"  type="file">
                     </div> 
                 
                     <div class="mb-4">
