@@ -35,7 +35,7 @@
                     
                         @auth
                       <li class="mr-3">
-                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ url('/dashboard') }}">get started</a>
+                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
                       </li>
                       @else
                       <li class="mr-3">
@@ -71,20 +71,20 @@
             Subscribe
           </button> --}}
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            @if (Route::has('login'))
+            {{-- @if (Route::has('login'))
         
-            @auth
+            @auth --}}
           <li class="mr-3">
-            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ url('/dashboard') }}">get started</a>
+            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
           </li>
-          @elseif (Route::has('register'))
+          {{-- @elseif (Route::has('register'))
           <li class="mr-3">
             <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('register') }}">register</a>
           </li>
           
           @endauth
       
-      @endif
+      @endif --}}
         </div>
      
         <div class="w-full md:w-3/5 py-6 text-center">
@@ -128,26 +128,12 @@
         <h3 class="my-4 text-3xl leading-tight">
           Main Hero Message to sell yourself!
         </h3>
-        {{-- <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-          Action!
-        </button> --}}
-
 
         <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            @if (Route::has('login'))
-        
-            @auth
+
           <li class="mr-3">
-            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ url('/dashboard') }}">get started</a>
+            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('user') }}">star my bisuness</a>
           </li>
-          @elseif (Route::has('register'))
-          <li class="mr-3">
-            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('register') }}">register</a>
-          </li>
-          
-          @endauth
-      
-      @endif
 
       </section>
 

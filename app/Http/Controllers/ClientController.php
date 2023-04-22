@@ -68,7 +68,8 @@ class ClientController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        $user = Auth::user()->id;
+        // $user = Auth::user()->id;
+        $user = User::all();
         // $comment = comment::->get();
         // // 
         $comments = Comment::where('product_id',$id)->join('users', 'comments.user_id', '=', 'users.id')

@@ -55,9 +55,9 @@ Route::get('/delCategory/{id}', [adminController::class, 'destroy'])->middleware
 
 
 Route::get('/user', [userController::class, 'home'])->middleware('auth')->name('user');
-Route::post('/user/product', [userController::class, 'store'])->middleware('auth')->name('productsAdd');
-Route::get('/user/product', [userController::class, 'productuser'])->middleware('auth')->name('productshome');
-Route::get('/user/magasine', [userController::class, 'editmagasine'])->middleware('auth')->name('editmaasine');
+Route::post('/user/product', [userController::class, 'store'])->middleware('auth','user')->name('productsAdd');
+Route::get('/user/product', [userController::class, 'productuser'])->middleware('auth','user')->name('productshome');
+Route::get('/user/magasine', [userController::class, 'editmagasine'])->middleware('auth','user')->name('editmaasine');
 
 
 Route::get('/client',function(){
@@ -67,7 +67,7 @@ Route::get('/client',function(){
 Route::get('/client', [ClientController::class, 'home'])->name('client');
 Route::get('/client/search', [ClientController::class, 'search'])->name('serchproduct');
 Route::get('/client/product/{id}', [ClientController::class, 'show'])->name('viewproduct');
-Route::post('/client/product/comment', [ClientController::class, 'addcomment'])->name('addcomment');
+Route::post('/client/product/comment', [ClientController::class, 'addcomment'])->middleware('auth')->name('addcomment');
 
 
 

@@ -36,6 +36,16 @@
                     </div>
                 </div>
 
+
+
+            
+
+              @if ($data)
+                  <h1>your magasine is in panding</h1>
+              @else
+                  
+              
+
                 <div class="flex flex-wrap w-full justify-center mt-12">
                   <form method="POST" enctype="multipart/form-data" action="{{ route('storeMagasine')}}" class="w-full max-w-md bg-white rounded-lg shadow-lg px-6 pt-8 pb-6 mb-4">
                     @csrf
@@ -70,10 +80,14 @@
                   </form>
                 </div>
 
+
+                @endif
+
+
                 </div> 
             </div>
-        </section>
-    </div>
+        
+    
 </main>
 
 </body>
