@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tailwind Starter Template - Nordic Shop: Tailwind Toolbox</title>
+    <title>shop</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 	
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 
 
 
-    <nav id="header" class="fixed z-50 top-0 w-full bg-white border-b border-gray-200">
+    <nav id="header" class="fixed z-50 top-0 w-full bg-red-500 border-b border-gray-200">
         <div class="container flex items-center justify-between mx-auto py-3 px-4 md:px-0">
           
           <!-- Mobile menu toggle -->
@@ -30,8 +30,8 @@
           <input class="hidden" type="checkbox" id="menu-toggle" />
       
           <!-- Logo -->
-          <a class="flex items-center text-xl font-bold tracking-wide text-gray-800 hover:text-black" href="#">
-            NORDICS
+          <a class=" text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{{url('/')}}">
+            store
           </a>
       
       
@@ -50,7 +50,7 @@
             @endforeach
             </select>
             <input name="search" type="text" class="py-1 px-2 text-sm text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" placeholder="Search...">
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 <i class="fas fa-search"></i> Search
               </button>
           </form>
@@ -67,7 +67,7 @@
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
             
-                                    <a class="bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded" href="route('logout')"
+                                    <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">
                                         {{ __('Log Out') }}
@@ -78,15 +78,15 @@
             
                             </li>
                             <li class="flex-1 md:flex-none md:mr-3">
-                                <a class="bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded" href="{{route('profile.edit')}}">profile</a>
+                                <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{route('profile.edit')}}">profile</a>
                             </li>
                         </ul>
                     {{-- </div> --}}
                     @else
-                        <a href="{{ route('login') }}" class="bg-transparent hover:bg-white hover:bg-opacity-50 text-white font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Log in</a>
+                        <a href="{{ route('login') }}" class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 bg-transparent hover:bg-white hover:bg-opacity-50 text-black font-semibold py-2 px-4  hover:border-transparent text-lg rounded">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -103,21 +103,13 @@
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Items -->
             <div class="grid grid-flow-col gap-4">
+
+              @foreach ($products5 as $product5)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
+                    <img src="/images/{{$product5->image}}" class="w-full h-full object-cover" alt="...">
                 </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
-                </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
-                </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
-                </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/images/1680793564.jpg" class="w-full h-full object-cover" alt="...">
-                </div>
+                @endforeach
+
             </div>
         </div>
         <!-- Slider indicators -->
@@ -142,6 +134,10 @@
 
     <section class="bg-white py-8">
 
+      <div class=" flex justify-center text-black">
+        <h1 class=" text-2xl font-bold uppercase " >products</h1>
+      </div>
+
         <div class="container mx-auto flex flex-wrap pt-4 pb-12">
             @foreach ($products as $product)
               <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
@@ -160,7 +156,7 @@
     </section>
 
 
-    <footer class="container mx-auto bg-white py-8 border-t border-gray-400">
+    <footer class=" mx-auto bg-red-500 w-full py-8 border-t  border-gray-400">
         <section class="container mx-auto text-center py-6 mb-12 ">
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
               Call to Action
@@ -168,14 +164,14 @@
             <div class="w-full mb-4">
               <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <h3 class="my-4 text-3xl leading-tight">
+            <h3 class="my-4 text-white text-3xl leading-tight">
               Main Hero Message to sell yourself!
             </h3>
     
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
     
               <li class="mr-3">
-                <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('user') }}">star my bisuness</a>
+                <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('user') }}">star my bisuness</a>
               </li>
     
           </section>

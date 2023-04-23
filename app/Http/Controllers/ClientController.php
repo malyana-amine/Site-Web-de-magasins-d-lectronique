@@ -20,12 +20,13 @@ class ClientController extends Controller
 
         // $products = Product::all();
         $products = Product::inRandomOrder()->take(8)->get();
+        $products5 = Product::inRandomOrder()->take(5)->get();
         // $products = Product::all()->random(8);
         // dd($products);
         $categories = Category::all();
         $magazines = Magasine::all();
         $cities = city::all();
-        return view('clientacuell', ['categories' => $categories, 'magazines' => $magazines, 'cities' => $cities, 'products' => $products ]);
+        return view('clientacuell', ['categories' => $categories, 'magazines' => $magazines, 'cities' => $cities, 'products' => $products, 'products5' => $products5 ]);
 
     }
 
@@ -35,6 +36,7 @@ class ClientController extends Controller
         $categories = Category::all();
         $magazines = Magasine::all();
         $cities = city::all();
+        $products5 = Product::inRandomOrder()->take(5)->get();
 
 
         $category = $request->input('category');
@@ -63,7 +65,7 @@ class ClientController extends Controller
         $products = $query->get();
         // dd($products);
     
-        return view('clientacuell', ['products' => $products,'categories' => $categories, 'magazines' => $magazines, 'cities' => $cities]);
+        return view('clientacuell', ['products' => $products,'categories' => $categories, 'magazines' => $magazines, 'cities' => $cities, 'products5' => $products5]);
     }
     public function show($id)
     {

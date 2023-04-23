@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>store</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -15,13 +15,13 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="antialiased leading-normal tracking-normal text-white bg-orange-600" >
+    <body class="antialiased leading-normal tracking-normal text-orange-200 bg-red-500" >
         <div class="">
             <nav id="header" class="fixed w-full z-30 top-0 text-black">
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
                   <div class="pl-4 flex items-center">
-                    <a class=" text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                      LANDING
+                    <a class=" text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{{url('/')}}">
+                      store
                     </a>
                   </div>
                   <div class="block lg:hidden pr-4">
@@ -35,15 +35,15 @@
                     
                         @auth
                       <li class="mr-3">
-                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
+                        <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
                       </li>
                       @else
                       <li class="mr-3">
-                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('login') }}">login</a>
+                        <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('login') }}">login</a>
                       </li>
                       @if (Route::has('register'))
                       <li class="mr-3">
-                        <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('register') }}">register</a>
+                        <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('register') }}">register</a>
                       </li>
                       @endif
                       @endauth
@@ -75,7 +75,7 @@
         
             @auth --}}
           <li class="mr-3">
-            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
+            <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('client') }}">get started</a>
           </li>
           {{-- @elseif (Route::has('register'))
           <li class="mr-3">
@@ -132,7 +132,7 @@
         <ul class="list-reset lg:flex justify-end flex-1 items-center">
 
           <li class="mr-3">
-            <a class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('user') }}">star my bisuness</a>
+            <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{ route('user') }}">star my bisuness</a>
           </li>
 
       </section>
