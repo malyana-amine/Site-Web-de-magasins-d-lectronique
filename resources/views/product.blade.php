@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>product</title>
+    <title>Tailwind Starter Template - Nordic Shop: Tailwind Toolbox</title>
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 	
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
@@ -106,7 +106,7 @@
                     <div class="w-full md:w-1/2">
                       <img class="w-full" src="/images/{{ $data->image }}" alt="Product Image">
                     </div>
-                    <div class="w-full md:w-1/2 px-4 bg-gray-100 text-black flex items-center justify-center flex-col">
+                    <div class="w-full md:w-1/2 px-4 bg-gray-100 flex items-center justify-center flex-col">
                       <h1 class="text-2xl font-bold mb-4">{{ $data->title }}</h1>
                       <div class="text-base mb-4">description : {{ $data->product_description }}</div>
                       <div class="text-base mb-4">adrees : {{ $data->address }}</div>
