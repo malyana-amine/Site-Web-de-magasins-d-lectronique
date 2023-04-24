@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\comment;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Magasine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -113,6 +114,23 @@ class ClientController extends Controller
     
         // return $this->show($id);
         return Redirect::Route('viewproduct',$id);
+    }
+
+    public function favorite($id){
+
+        $product = product::find($id);
+
+        $list = new Favorite;
+
+        $user = Auth::user()->id;
+
+        $list->client_id = $user;
+        $list->product_id = $product->id;
+
+        $list->save();
+        // dd('hi');
+        return Redirect::Route('viewproduct',$product->id);
+
     }
 
 }

@@ -114,6 +114,9 @@
                       <div class="text-lg font-bold mb-4">magasine : {{ $data->magasine_name }}</div>
                       <div class="text-3xl font-bold mb-4">{{ $data->price }}DH</div>
 
+                      <a href="{{route('list', $product->id)}}"> add to my list </a>
+
+
                     </div>
                   </div>
                 </div>
