@@ -52,10 +52,12 @@
                     <div class="mb-4">
                       <label for="magazine_name" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Magazine Name</label>
                       <input type="text" name="name" id="magazine_name" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent block w-full py-2 px-3" placeholder="Enter your magazine name" required>
+                      <small id="nameerror" class=" hidden text-red-700">name</small>
                     </div>
                     <div class="mb-4">
                       <label for="address" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Address</label>
                       <input type="text" name="adress" id="address" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent block w-full py-2 px-3" placeholder="Enter your address" required>
+                      <small id="adreeserror" class=" hidden text-red-700">adrees</small>
                     </div>
                     <div class="mb-4">
                       <label for="city" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">City</label>
@@ -73,6 +75,7 @@
                     <div class="mb-4">
                       <label for="telephone" class="block mb-1 text-sm font-medium text-gray-700 dark:text-white">Telephone Number</label>
                       <input type="tel" name="teleNumber" id="telephone" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent block w-full py-2 px-3" placeholder="Enter your telephone number" required>
+                      <small id="numbererror" class=" hidden text-red-700">number</small>
                     </div>
                     <div class="flex items-center justify-between">
                       <button type="submit" class="bg-blue-600 text-white font-bold py-2 px-4 rounded " style="transition: all 0.15s ease" >Submit</button>
@@ -99,10 +102,14 @@
   const city = document.getElementById("city");
   const telephone = document.getElementById("telephone");
   const submitBtn = document.querySelector("button[type='submit']");
+  const nameerror = document.getElementById("nameerror");
+  const adreeserror = document.getElementById("adreeserror");
+  const numbererror = document.getElementById("numbererror");
   
   // Regex patterns for input validation
   const nameRegex = /^[a-zA-Z\s]+$/;
-  const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
+  const addressRegex = /^[a-zA-Z\s]+$/;
+  // const addressRegex = /^[a-zA-Z0-9\s,'-]*$/;
   const telephoneRegex = /^[0-9]{10}$/;
   
   // Add keyup event listeners to input fields
@@ -114,8 +121,11 @@
   function validateMagazineName() {
     if (nameRegex.test(magazineName.value)) {
       magazineName.classList.remove("border-red-500");
+      nameerror.classList.add("hidden");
     } else {
       magazineName.classList.add("border-red-500");
+      nameerror.classList.remove("hidden");
+      
     }
     validateForm();
   }
@@ -124,8 +134,10 @@
   function validateAddress() {
     if (addressRegex.test(address.value)) {
       address.classList.remove("border-red-500");
+      adreeserror.classList.add("hidden");
     } else {
       address.classList.add("border-red-500");
+      adreeserror.classList.remove("hidden");
     }
     validateForm();
   }
@@ -134,8 +146,10 @@
   function validateTelephone() {
     if (telephoneRegex.test(telephone.value)) {
       telephone.classList.remove("border-red-500");
+      numbererror.classList.add("hidden");
     } else {
       telephone.classList.add("border-red-500");
+      numbererror.classList.remove("hidden");
     }
     validateForm();
   }
