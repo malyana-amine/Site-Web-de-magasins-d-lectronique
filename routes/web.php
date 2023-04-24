@@ -58,6 +58,7 @@ Route::get('/user', [userController::class, 'home'])->middleware('auth')->name('
 Route::post('/user/product', [userController::class, 'store'])->middleware('auth','user')->name('productsAdd');
 Route::get('/user/product', [userController::class, 'productuser'])->middleware('auth','user')->name('productshome');
 Route::get('/user/magasine', [userController::class, 'editmagasine'])->middleware('auth','user')->name('editmaasine');
+Route::post('/user/magasine/{id}', [userController::class, 'updatemagasine'])->middleware('auth','user')->name('updatemagasine');
 
 
 Route::get('/client',function(){

@@ -68,5 +68,28 @@ class userController extends Controller
         return view('updatemagasine', ['data' => $data, 'cities' => $cities]);
 
     }
+    public function updatemagasine(Request $request,$id){
+
+        $Magasine = Magasine::find($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time() . '.' . $image->getClientOriginalExtension();
+            $destination_path = public_path('images/');
+            $image->move($destination_path, $image_name);
+            $Magasine->image = $image_name;
+            $Magasine->update();
+            
+        }
+    
+        $Magasine->update(request()->except('image'));
+    
+        // return redirect()->route('MagasineAdd');
+
+        return redirect()->route('editmaasine');
+
+    }
+
+
      
 }

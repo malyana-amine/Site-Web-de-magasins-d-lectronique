@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center py-12">
-                  <form method="POST" enctype="multipart/form-data" action="{{ route('storeMagasine')}}" class="w-full max-w-md bg-white rounded-lg shadow-lg px-6 pt-8 pb-6">
+                  <form method="POST" enctype="multipart/form-data" action="{{ route('updatemagasine',$data->id)}}" class="w-full max-w-md bg-white rounded-lg shadow-lg px-6 pt-8 pb-6">
                     @csrf
                     <div class="mb-4">
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Your email</label>

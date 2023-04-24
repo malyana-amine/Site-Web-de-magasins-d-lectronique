@@ -79,7 +79,7 @@ public function update(Request $request,$id)
 
     $Products->update(request()->except('image'));
 
-    return redirect()->route('dashboard');
+    return redirect()->route('productsAdd');
 
 }
 
