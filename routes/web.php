@@ -70,6 +70,8 @@ Route::get('/client/search', [ClientController::class, 'search'])->name('serchpr
 Route::get('/client/product/{id}', [ClientController::class, 'show'])->name('viewproduct');
 Route::post('/client/product/comment', [ClientController::class, 'addcomment'])->middleware('auth')->name('addcomment');
 Route::get('/client/product/list/{id}', [ClientController::class, 'favorite'])->middleware('auth')->name('list');
+Route::get('/client/list', [ClientController::class, 'showfavprodcts'])->middleware('auth')->name('favprodcts');
+Route::delete('/client/list/{id}', [ClientController::class, 'removefavorite'])->middleware('auth')->name('removefavorite');
 
 
 

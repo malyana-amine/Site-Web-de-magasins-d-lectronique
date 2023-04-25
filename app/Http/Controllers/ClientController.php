@@ -133,4 +133,35 @@ class ClientController extends Controller
 
     }
 
+    public function showfavprodcts()
+    {
+
+        $user = Auth::user()->id;
+        $favorites = Favorite::join('products', 'products.id', '=', 'favorites.product_id')
+            ->select('products.name','products.id','favorites.id as favorite_id')
+            ->where('favorites.client_id', '=', $user)
+            ->get();
+        // dd($favorites);
+        $cities = city::all();
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('favlist', compact('favorites','cities', 'categories'));
+    }
+    public function removefavorite($id)
+    {
+        $favorite = Favorite::find($id);
+    
+        if ($favorite) {
+            $favorite->delete();
+        } else {
+            // Handle the case where the favorite does not exist
+        }
+    
+        return redirect()->route('favprodcts');
+    }
+    
+    
+    
+
+    
+
 }

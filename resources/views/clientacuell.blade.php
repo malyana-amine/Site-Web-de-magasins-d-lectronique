@@ -15,12 +15,12 @@
 
 <body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
+  @include('comp.usernav')
 
-
-    <nav id="header" class="fixed z-50 top-0 w-full bg-red-500 border-b border-gray-200">
+    {{-- <nav id="header" class="fixed z-50 top-0 w-full bg-red-500 border-b border-gray-200">
         <div class="container flex items-center justify-between mx-auto py-3 px-4 md:px-0">
           
-          <!-- Mobile menu toggle -->
+          
           <label for="menu-toggle" class="md:hidden">
             <svg class="w-6 h-6 fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <title>menu</title>
@@ -28,14 +28,9 @@
             </svg>
           </label>
           <input class="hidden" type="checkbox" id="menu-toggle" />
-      
-          <!-- Logo -->
           <a class=" text-black no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="{{url('/')}}">
             store
           </a>
-      
-      
-          <!-- Filter by city and search -->
           <form method="GET" action="{{ route('serchproduct')}}" class="hidden md:block flex items-center space-x-4">
             <select name="city" class="py-1 px-2 text-sm text-gray-700 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
               <option value="" disabled selected>Filter by city</option>
@@ -55,12 +50,10 @@
               </button>
           </form>
       
-          <!-- User name and log out -->
           <div class="hidden md:block flex items-center space-x-4">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
-                    {{-- <div class="flex w-full pt-2 content-center justify-between md:w-1/3 md:justify-end"> --}}
                         <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
                             <li class="flex-1 md:flex-none md:mr-3">
             
@@ -81,7 +74,6 @@
                                 <a class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out" href="{{route('profile.edit')}}">profile</a>
                             </li>
                         </ul>
-                    {{-- </div> --}}
                     @else
                         <a href="{{ route('login') }}" class="mx-auto lg:mx-0 hover:underline bg-yellow-200 text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-2 px-4 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Log in</a>
 
@@ -94,11 +86,11 @@
           </div>
       
         </div>
-      </nav> 
+    </nav>  --}}
 
 
 
-      <div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <div id="default-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
             <!-- Items -->
