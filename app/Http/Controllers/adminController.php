@@ -34,6 +34,7 @@ class adminController extends Controller
         $propId = $magazines->prop_id;
         // dd($propId);
         $user = User::find($propId);
+        
         $user->update(['roleId' => "2"]);
         $user->save();
 
