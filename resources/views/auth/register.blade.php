@@ -102,9 +102,10 @@
     
     // Regex patterns for input validation
     const nameRegex = /^[a-zA-Z\s]+$/;
-    const emailRegex = /^[a-zA-Z\s]+$/;
-    const passwordRegex = /^[a-zA-Z\s]+$/;
-    const password_confirmationRegex = /^[a-zA-Z\s]+$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&\s]{8,}$/;
+const password_confirmationRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&\s]{8,}$/;
+
     // const ageRegex = /^[a-zA-Z\s]+$/;
     const ageRegex = /^\d+$/;
 

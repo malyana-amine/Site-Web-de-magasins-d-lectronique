@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\city;
 use App\Models\User;
+use App\Mail\TestEmail;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Magasine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class adminController extends Controller
 {
@@ -38,6 +40,14 @@ class adminController extends Controller
         $user->update(['roleId' => "2"]);
         $user->save();
 
+
+        // mailing
+        $mailData = [
+            "name" => "$user->name",
+            "dob" => "lwa9t"
+        ];
+    
+        Mail::to("$user->email")->send(new TestEmail($mailData));
 
         return redirect()->route('adminMagasine');
     }
