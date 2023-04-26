@@ -71,7 +71,10 @@ class ClientController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        // $user = Auth::user()->id;
+        $userAuth = null; // initialize with a default value
+        if (Auth::user()){
+            $userAuth = Auth::user()->id;
+        }
         $user = User::all();
         // $comment = comment::->get();
         // // 
@@ -91,8 +94,13 @@ class ClientController extends Controller
 
         $cities = city::all();
         $categories = Category::orderBy('name', 'asc')->get();
-    
+
+        if($userAuth){
+            
+            return view('product', compact('data', 'cities', 'categories','product','user','comments','userAuth'));
+        }
         return view('product', compact('data', 'cities', 'categories','product','user','comments'));
+    
     }
 
 

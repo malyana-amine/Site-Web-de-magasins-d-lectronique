@@ -146,7 +146,12 @@
         <form method="POST" enctype="multipart/form-data" action="{{ route('addcomment')}}" class="mt-4">
           @csrf
           <input type="text" name="comment" placeholder="Add your comment" class="px-4 py-2 border rounded-md w-full" />
-          <input type="hidden" value="{{ $user }}" name="user_id"/>
+          @if (isset($userAuth) && is_numeric($userAuth))
+
+          <input type="hidden" value="{{ $userAuth }}" name="user_id"/>
+      
+      @endif
+          
           <input type="hidden" value="{{ $product->id }}" name="product_id"/>
           
           <label for="image-upload" class="block mt-2 text-gray-700 cursor-pointer">Upload an Image</label>

@@ -13,7 +13,7 @@
                 </li>
 
                 @else
-                {{ $data->status }}
+                {{-- {{ $data->status }} --}}
                 <li class="mr-3 flex-1">
                     <a href="{{route('user')}}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
                         <i class="far fa-chart-bar pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">statistiques</span>
@@ -22,7 +22,7 @@
                 
                 <li class="mr-3 flex-1">
                     <a href="{{route('productsAdd')}}" class="block py-1 md:py-3 pl-1 align-middle text-white no-underline hover:text-white border-b-2 border-gray-800 hover:border-purple-500">
-                        <i class="fas fa-kite pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">my products</span>
+                        <i class="fas fa-mobile pr-0 md:pr-3"></i><span class="pb-1 md:pb-0 text-xs md:text-base text-gray-400 md:text-gray-200 block md:inline-block">my products</span>
                     </a>
                 </li>
                 <li class="mr-3 flex-1">

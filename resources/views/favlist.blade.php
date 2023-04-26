@@ -17,7 +17,10 @@
 
   @include('comp.usernav')
 
-
+<h1 class="pt-20 "></h1>
+<div class=" flex justify-center text-black">
+  <h1 class=" text-2xl font-bold uppercase " >my favorite list</h1>
+</div>
   <table class="min-w-full divide-y divide-gray-200">
     <thead class="bg-gray-50">
         <tr>

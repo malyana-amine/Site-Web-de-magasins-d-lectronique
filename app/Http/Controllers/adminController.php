@@ -76,3 +76,4 @@ class adminController extends Controller
      return $this->adminCategory();
  }
 }
+  
