@@ -78,15 +78,15 @@
     </section>
 
 
-    <footer class=" mx-auto bg-red-500 w-full py-8 border-t  border-gray-400">
+    <footer class=" mx-auto bg-gray-300 w-full py-8 border-t  border-gray-400">
         <section class="container mx-auto text-center py-6 mb-12 ">
-            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-black">
               Call to Action
             </h2>
             <div class="w-full mb-4">
-              <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+              <div class="h-1 mx-auto  w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <h3 class="my-4 text-white text-3xl leading-tight">
+            <h3 class="my-4 text-black text-3xl leading-tight">
               Main Hero Message to sell yourself!
             </h3>
     

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Magasine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class userController extends Controller
 {
@@ -36,30 +37,63 @@ class userController extends Controller
         
     }
 
+    // public function store(Request $request)
+    // {
+
+    //     $inputs = $request->all();
+    //     $data = Magasine::where('prop_id',auth()->user()->id)->first();
+    //     $Categories = Category::orderBy('name', 'asc')->get();
+
+    //     $inputs['magasine_id'] = $data->id;
+
+
+    //      if ($request->hasFile('image')) {
+    //         $image = $request->file('image');
+    //         $image_name = time() . '.' . $image->getClientOriginalExtension();
+    //         $destination_path = public_path('images/');
+    //         $image->move($destination_path, $image_name);
+    //         $inputs['image'] = $image_name;
+    //     }
+
+
+    //     Product::create($inputs);
+        
+    //     return $this->productuser();
+        
+    // }
+
     public function store(Request $request)
-    {
+{
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'categ_id' => 'required|exists:categories,id',
+        'price' => 'required|numeric|min:0',
+    ]);
 
-        $inputs = $request->all();
-        $data = Magasine::where('prop_id',auth()->user()->id)->first();
-        $Categories = Category::orderBy('name', 'asc')->get();
-
-        $inputs['magasine_id'] = $data->id;
-
-
-         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image_name = time() . '.' . $image->getClientOriginalExtension();
-            $destination_path = public_path('images/');
-            $image->move($destination_path, $image_name);
-            $inputs['image'] = $image_name;
-        }
-
-
-        Product::create($inputs);
-        
-        return $this->productuser();
-        
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $inputs = $request->all();
+    $data = Magasine::where('prop_id', auth()->user()->id)->first();
+    $Categories = Category::orderBy('name', 'asc')->get();
+    $inputs['magasine_id'] = $data->id;
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $image_name = time() . '.' . $image->getClientOriginalExtension();
+        $destination_path = public_path('images/');
+        $image->move($destination_path, $image_name);
+        $inputs['image'] = $image_name;
+    }
+
+    Product::create($inputs);
+
+    return $this->productuser();
+}
+
     public function editmagasine(){
 
         $data = Magasine::where('prop_id',auth()->user()->id)->first();

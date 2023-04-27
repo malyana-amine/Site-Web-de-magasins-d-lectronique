@@ -15,7 +15,7 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="antialiased leading-normal tracking-normal text-orange-200 bg-red-500" >
+    <body class="antialiased leading-normal tracking-normal text-black bg-gray-300" >
         <div class="">
             <nav id="header" class="fixed w-full z-30 top-0 text-black">
                 <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">

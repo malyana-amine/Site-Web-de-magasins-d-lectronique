@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
+<body class=" min-h-screen bg-white flex flex-col text-gray-600 work-sans leading-normal text-base tracking-normal">
 
   @include('comp.usernav')
 
@@ -49,10 +49,10 @@
 </table>
   
 
-    <footer class=" mx-auto bg-white py-8 border-t border-gray-400">
+    {{-- <footer class=" mx-auto bg-white py-8 border-t border-gray-400"> --}}
       
       
-      <div class=" mx-auto bg-red-500 w-full py-8 border-t  border-gray-400">
+      <div class="  mt-auto bg-gray-300 w-full py-8 border-t  border-gray-400">
         <section class="container mx-auto text-center py-6 mb-12 ">
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
               Call to Action
@@ -71,9 +71,9 @@
               </li>
     
           </section>
-    </div>
+    </div> 
          
-    </footer>
+    {{-- </footer> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 
 </body>
