@@ -64,7 +64,13 @@
             @foreach ($products as $product)
               <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <a href="{{route('viewproduct',$product->id)}}" class="group">
-                  <img class="w-full hover:scale-110 transition duration-300 ease-in-out transform hover:shadow-lg" src="/images/{{$product->image}}">
+                  <div style="height: 400px;
+                 
+                  ">
+                  <img class="w-full h-full hover:scale-110 transition duration-300 ease-in-out transform hover:shadow-lg" 
+                  src="/images/{{$product->image}}"
+                  style=" background-image:cover ; object-fit: cover;
+                  object-position: center;"></div>
                   <div class="pt-3 flex items-center justify-between">
                     <p class="text-gray-900 font-medium group-hover:text-blue-600">{{$product->name}}</p>
                   </div>
